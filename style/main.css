@@ -1,0 +1,16 @@
+.example{
+  padding: 1.5rem;
+  margin-right: 0;
+  margin-left: 0;
+  border-width: .2rem;
+}
+.groups{
+  margin-bottom: .5rem;
+}
+.form-group{
+  position: relative;
+}
+.copyresult{
+  display: none; position:absolute;z-index:5;background:rgba(0,0,0,0.6);border-radius:3px;line-height:20px;top:0;color:#fff;padding:.2rem .5rem;right:0; opacity: 0; transition: opacity .5s  ease-in-out;
+}
+.copyresult.active{ opacity: 1; }

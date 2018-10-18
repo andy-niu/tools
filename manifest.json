@@ -1,0 +1,32 @@
+﻿{
+    "manifest_version": 2,
+    "name": "tool",
+    "version": "2.0.1",
+    "description": "tool 2.0.1 edit: 2018-10-16 13:06:20",
+    "browser_action": {
+        "default_icon": {
+            "19": "images/icon.png",
+            "38": "images/icon.png"
+        },
+        "default_title": "tools",
+        "default_popup": "options.html"
+    },
+    "permissions": [
+        "tabs",
+        "<all_urls>",
+        "webRequest",
+        "webRequestBlocking",
+        "contextMenus"
+    ],
+    "icons": {
+        "16": "images/icon.png",
+        "48": "images/icon.png",
+        "128": "images/icon.png"
+    },
+    "minimum_chrome_version": "22.0.0",
+    "options_page": "tools.html",
+    "options_ui": {
+        "page": "tools.html",
+        "open_in_tab": true
+    }
+}

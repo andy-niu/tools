@@ -1,0 +1,51 @@
+﻿<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="./style/bootstrap.min.css">
+    <link rel="stylesheet" href="./style/main.css">
+    <title>tool</title>
+</head>
+
+<body>
+    <div class="example">
+        <!-- Content here -->
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1">输入内容</label>
+            <textarea class="form-control" id="code" rows="10" placeholder="请输入内容"></textarea>
+        </div>
+        <div>
+            <div class="groups">
+                <button class="btn btn-outline-secondary" id="replace">替换\n</button>
+                <button class="btn btn-outline-secondary" id="convert2html">转换html</button>
+            </div>
+            <div class="groups">
+                <button class="btn btn-outline-secondary" id="fromart_button">样式格式化</button>
+                <button class="btn btn-outline-secondary" id="pack_button">样式压缩</button>
+                <button class="btn btn-outline-secondary" id="replace_button">\n替换逗号</button>
+                <button class="btn btn-outline-secondary" id="encode_button">UrlEncode</button>
+                <button class="btn btn-outline-secondary" id="decode_button">UrlDecode</button>
+            </div>
+            <div class="groups">
+                <button class="btn btn-outline-secondary" id="clear">清空</button>
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            <textarea class="form-control" id="coderesult" rows="10" placeholder="结果"></textarea>
+            <div class="copyresult"></div>
+        </div>
+    </div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="./scripts/jquery.slim.min.js"></script>
+    <script src="./scripts/main.js"></script>
+</body>
+
+</html>
