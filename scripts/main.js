@@ -56,6 +56,16 @@
         })
         $('#coderesult').val(array.join(','));
     });
+    //\n替换逗号(')
+    $('#replace_button2').on('click', () => {
+        var code = $('#code').val()
+        let array = code.split('\n').filter(function (item) {
+            return item.replace(/(^\s*)|(\s*$)/gi, '') != ''
+        }).map(function (item) {
+            return item.replace(/(^\s*)|(\s*$)/gi, '')
+        })
+        $('#coderesult').val("'"+array.join("','")+"'");
+    });
     //UrlEncode
     $('#encode_button').on('click', () => {
         $('#coderesult').val(encodeURIComponent($('#code').val()).replace(/'/g, "%27").replace(/"/g, "%22"));;

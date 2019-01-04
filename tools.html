@@ -18,25 +18,25 @@
             <label for="exampleFormControlTextarea1">输入内容</label>
             <textarea class="form-control" id="code" rows="10" placeholder="请输入内容"></textarea>
         </div>
-        <div>
+        <div class="form-group">
             <div class="groups">
-                <button class="btn btn-outline-secondary" id="replace">替换\n</button>
-                <button class="btn btn-outline-secondary" id="convert2html">转换html</button>
+                <button class="btn btn-success" id="replace">替换\n</button>
+                <button class="btn btn-primary" id="convert2html">转换html</button>
             </div>
             <div class="groups">
-                <button class="btn btn-outline-secondary" id="fromart_button">样式格式化</button>
-                <button class="btn btn-outline-secondary" id="pack_button">样式压缩</button>
-                <button class="btn btn-outline-secondary" id="replace_button">\n替换逗号</button>
-                <button class="btn btn-outline-secondary" id="encode_button">UrlEncode</button>
-                <button class="btn btn-outline-secondary" id="decode_button">UrlDecode</button>
-                <button class="btn btn-outline-secondary" id="bencode_button">Base64 Encode</button>
-                <button class="btn btn-outline-secondary" id="bdecode_button">Base64 Decode</button>
+                <button class="btn btn-outline-primary" id="fromart_button">样式格式化</button>
+                <button class="btn btn-outline-primary" id="pack_button">样式压缩</button>
+                <button class="btn btn-outline-success" id="replace_button">\n替换逗号</button>
+                <button class="btn btn-outline-success" id="replace_button2">\n替换逗号(')</button>
+                <button class="btn btn-outline-info" id="encode_button">UrlEncode</button>
+                <button class="btn btn-outline-info" id="decode_button">UrlDecode</button>
+                <button class="btn btn-outline-warning" id="bencode_button">Base64 Encode</button>
+                <button class="btn btn-outline-warning" id="bdecode_button">Base64 Decode</button>
             </div>
             <div class="groups">
-                <button class="btn btn-outline-secondary" id="clear">清空</button>
+                <button class="btn btn-dark" id="clear">清空</button>
             </div>
         </div>
-        <br />
         <div class="form-group">
             <textarea class="form-control" id="coderesult" rows="10" placeholder="结果"></textarea>
             <div class="copyresult"></div>
@@ -48,6 +48,48 @@
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="./scripts/jquery.slim.min.js"></script>
     <script src="./scripts/main.js"></script>
+    <script type="text/javascript">
+        function downloadImage(src){
+            var canvas = document.createElement('canvas');
+            var imgObj = new Image();
+            imgObj.src = src;
+            imgObj.setAttribute("crossOrigin",'Anonymous')
+            //待图片加载完后，将其显示在canvas上
+            imgObj.onload = function(){
+                var ctx = canvas.getContext('2d');
+                canvas.width = this.width;
+                canvas.height =  this.height;
+                console.log(this.width,this.height)
+                ctx.drawImage(this, 0, 0);
+
+                //cavas 保存图片到本地  js 实现
+                //------------------------------------------------------------------------
+                //1.确定图片的类型  获取到的图片格式 data:image/Png;base64,......
+                var type ='jpg';//你想要什么图片格式 就选什么吧
+                var imgdata = canvas.toDataURL(type);
+                //2.0 将mime-type改为image/octet-stream,强制让浏览器下载
+                var fixtype = function(type){
+                    type=type.toLocaleLowerCase().replace(/jpg/i,'jpeg');
+                    var r=type.match(/png|jpeg|bmp|gif/)[0];
+                    return 'image/'+r;
+                };
+                imgdata = imgdata.replace(fixtype(type),'image/octet-stream');
+                //3.0 将图片保存到本地
+                var savaFile = function(data,filename)
+                {
+                    var save_link=document.createElementNS('http://www.w3.org/1999/xhtml', 'a');
+                    save_link.href=data;
+                    save_link.download=filename;
+                    var event=document.createEvent('MouseEvents');
+                    event.initMouseEvent('click',true,false,window,0,0,0,0,0,false,false,false,false,0,null);
+                    save_link.dispatchEvent(event);
+                };
+                var filename=''+new Date().getSeconds()+'.'+type;
+                //我想用当前秒是可以解决重名的问题了 不行你就换成毫秒
+                savaFile(imgdata,filename);
+            }             
+        }
+    </script>
 </body>
 
 </html>
